@@ -18,19 +18,23 @@ public class Employee {
     private boolean metWithHr;
     private boolean metDeptStaff;
     private boolean reviewedDeptPolicies;
-    private boolean movedIn;
+    private boolean isMovedIn;
+    private String cubeId;
 
     public Employee() {
-
+        meetWithHrForBenefitAndSalryInfo();
+        meetDepartmentStaff();
+        reviewDeptPolicies();
+        moveIntoCubicle();
     }
 
     // Assume this must be performed first
-    public void meetWithHrForBenefitAndSalryInfo() {
+    private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
     }
 
     // Assume this is must be performed second
-    public void meetDepartmentStaff() {
+    private void meetDepartmentStaff() {
         if(metWithHr) {
             metDeptStaff = true;
         } else {
@@ -40,7 +44,7 @@ public class Employee {
     }
 
     // Assume this must be performed third
-    public void reviewDeptPolicies() {
+    private void reviewDeptPolicies() {
         if(metWithHr && metDeptStaff) {
             reviewedDeptPolicies = true;
         } else {
@@ -51,10 +55,9 @@ public class Employee {
     }
 
     // Assume this must be performed 4th
-    public void moveIntoCubicle(String cubeId) {
+    private void moveIntoCubicle() {
         if(metWithHr && metDeptStaff && reviewedDeptPolicies) {
-            this.cubeId = cubeId;
-            this.movedIn = true;
+            this.isMovedIn = true;
         } else {
             throw new IllegalStateException("Sorry, you cannot move in to a "
                     + "cubicle until you have first met with HR "
@@ -66,7 +69,7 @@ public class Employee {
 
     public String getStatus() {
         if(metWithHr && metDeptStaff
-           && reviewedDeptPolicies && movedIn) {
+           && reviewedDeptPolicies && isMovedIn) {
             return "Orientation is complete";
         } else {
             return "Orientation in progress...";
@@ -74,6 +77,7 @@ public class Employee {
     }
 
     public void setFirstName(String firstName) {
+        //needs validation
         this.firstName = firstName;
     }
     
@@ -82,6 +86,7 @@ public class Employee {
     }
     
     public void setLastName(String lastName) {
+        //needs validation
         this.lastName = lastName;
     }
     
@@ -90,6 +95,7 @@ public class Employee {
     }
         
     public void setSsn(String ssn) {
+        //needs validation
         this.ssn = ssn;
     }
     
@@ -98,6 +104,7 @@ public class Employee {
     }
     
     public void setBirthDate(Date birthDate) {
+        //needs validation
         this.birthDate = birthDate;
     }
     
@@ -105,29 +112,12 @@ public class Employee {
         return birthDate;
     }
     
-    public void setMetWithHr(boolean metWithHr) {
-        this.metWithHr = metWithHr;
+    public void setCubeId(String cubeId) {
+        //needs validation
+        this.cubeId = cubeId;
     }
-    public boolean isMetWithHr() {
-        return metWithHr;
-    }
-    public void setMetDeptStaff(boolean metDeptStaff) {
-        this.metDeptStaff = metDeptStaff;
-    }
-    public boolean isMetDeptStaff() {
-        return metDeptStaff;
-    }
-    public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
-        this.reviewedDeptPolicies = reviewedDeptPolicies;
-    }
-    public boolean isReviewedDeptPolicies() {
-        return reviewedDeptPolicies;
-    }
-    public void setMovedIn(boolean movedIn) {
-        this.movedIn = movedIn;
-    }
-    public boolean isMovedIn() {
-        return movedIn;
-    }
-
+    
+    public String getCubeId() {
+        return cubeId;
+    }  
 }
