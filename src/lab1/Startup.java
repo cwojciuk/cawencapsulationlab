@@ -10,11 +10,11 @@ package lab1;
  */
 public class Startup {
     public static void main(String[] args) {
-        Employee employee = new Employee("");
+        Employee employee = new Employee();
         employee.setFirstName("Peter");
         employee.setLastName("Piper");
         employee.setSsn("333-1234");
-
+        employee.setCubeId("Cube 3");
         System.out.println("The employee's status is: " + employee.getStatus());
     }
     
